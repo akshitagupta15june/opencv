@@ -1,0 +1,21 @@
+import numpy as np
+import cv2 as cv
+from matplotlib import pyplot as plt
+img=cv.imread('korean.jpeg')
+#img=np.zeros((200,200),np.uint8)
+#cv.rectangle(img,(0,100),(200,200),(255),-1)
+#cv.rectangle(img,(0,50),(100,100),(127),-1)
+hist=cv.calcHist([img],[0],None,[256],[0,256])
+b,g,r=cv.split(img)
+plt.plot(hist)
+cv.imshow('b',b)
+cv.imshow('g',g)
+cv.imshow('r',r)
+cv.imshow('img',img)
+plt.hist(b.ravel(),256,[0,256])
+plt.hist(g.ravel(),256,[0,256])
+plt.hist(r.ravel(),256,[0,256])
+plt.show()
+#plt.hist(img.ravel(),256,[0,256])
+cv.waitKey(0)
+cv.destroyAllWindows()
